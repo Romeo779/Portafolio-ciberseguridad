@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- FAVICONES -->
+  <link rel="icon" href="/img/Logo Romeo.png" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="img/Logo Romeo.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="img/Logo Romeo.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/img/Logo Romeo.png" sizes="180x180">
+  <link rel="mask-icon" href="/img/Logo Romeo.png" color="#00e5ff">
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Romeo Garcia * Portafolio Ciberseguridad</title>
+  <meta name="color-scheme" content="dark light"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    :root{
+      /* Paleta base */
+      --bg:#0e1116;
+      --panel:#141922;
+      --ink:#e8f6ff;
+      --muted:#9fb3c8;
+
+      /* Acento */
+      --selector-color:#00e5ff;
+      --ring:0 12px 30px rgba(0,0,0,.45);
+
+      /* Dock */
+      --btn-size:48px;
+      --selector-size:var(--btn-size);
+      --dock-radius:9999px;
+
+      /* Footer */
+      --footer-bg:#10151d;
+      --footer-border:rgba(255,255,255,.08);
+      --footer-glow:radial-gradient(800px 300px at 50% -120px,
+        color-mix(in oklab, var(--selector-color) 8%, transparent) 0%,
+        transparent 60%);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(0,229,255,.06), transparent 50%),
+        radial-gradient(1000px 500px at 85% -10%, rgba(255,122,211,.05), transparent 50%),
+        var(--bg);
+      padding-bottom:calc(90px + env(safe-area-inset-bottom));
+    }
+    a{color:var(--selector-color)}
+    .container{max-width:1100px;margin:auto;padding:0 20px}
+
+    /* HERO */
+    .hero{padding:88px 0 36px;display:grid;gap:22px;justify-items:center;text-align:center}
+    .hero h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:6px 0 0}
+    .hero p.lead{max-width:820px;color:var(--muted);font-size:clamp(16px,2.4vw,20px)}
+    .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{background:var(--selector-color);color:#0a1016;border:none;border-radius:14px;padding:12px 18px;font-weight:700;box-shadow:var(--ring);cursor:pointer;transition:filter .25s, transform .2s}
+    .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+    .btn.outline{background:transparent;color:var(--selector-color);border:1.5px solid var(--selector-color);border-radius:14px}
+    .btn.outline:hover{background:color-mix(in oklab, var(--selector-color) 12%, transparent)}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:color-mix(in oklab,var(--panel) 90%, #000 10%);border:1px solid rgba(255,255,255,.06);color:var(--muted);padding:8px 10px;border-radius:999px;margin:6px 6px 0 0}
+
+    /* Badges de habilidades */
+    .skills .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:color-mix(in oklab,var(--panel) 90%, #000 10%);
+      border:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:999px;
+      margin:6px 6px 0 0;
+      cursor:default;
+      transition:color .25s, border-color .25s, background .25s;
+    }
+    .skills .badge i{
+      font-size:1.05rem;
+      transition:color .25s;
+    }
+    .skills .badge:hover{
+      color:var(--selector-color);
+      border-color:var(--selector-color);
+      background:rgba(0,229,255,.08);
+    }
+    .skills .badge:hover i{color:var(--selector-color);}
+
+    /* ACERCA DE MÍ */
+    .about-section{padding:68px 0;background:var(--bg)}
+    .about-content{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:center}
+    .about-image-wrapper{position:relative;display:flex;justify-content:center}
+    .about-frame{
+      width:min(380px,100%);aspect-ratio:0.85/1;border-radius:32px;overflow:hidden;position:relative;
+      background:linear-gradient(135deg, rgba(138,138,138,0.15) 0%, rgba(95,95,95,0.1) 100%);
+      box-shadow:0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.08) inset;
+      border:2px solid rgba(255,255,255,.06);
+    }
+    .about-frame img{
+      width:100%;height:100%;object-fit:cover;transition:transform .3s ease;
+    }
+    .about-frame:hover img{transform:scale(1.05)}
+    .about-text h2{margin:0 0 24px;font-size:clamp(28px,4vw,38px)}
+    .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .stat-card{
+      background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:16px;
+      padding:20px 16px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3);
+      transition:transform .2s ease, border-color .2s ease;
+    }
+    .stat-card:hover{transform:translateY(-3px);border-color:color-mix(in oklab, var(--selector-color) 45%, transparent)}
+    .stat-card i{font-size:28px;color:var(--selector-color);margin-bottom:8px;opacity:.9}
+    .stat-card .stat-label{font-size:.85rem;color:var(--muted);margin:4px 0}
+    .stat-card .stat-value{font-size:1.1rem;font-weight:700;color:var(--ink)}
+    .about-description{color:var(--muted);line-height:1.7;margin:20px 0}
+    .about-description--accent{color:var(--selector-color);}
+    .about-text-main{
+      color:var(--muted);
+      line-height:1.7;
+      margin:20px 0;
+      text-align:justify;
+    }
+    @media (max-width:880px){
+      .about-content{grid-template-columns:1fr;gap:32px;text-align:center}
+      .about-stats{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width:520px){
+      .about-stats{grid-template-columns:1fr;max-width:280px;margin:28px auto}
+      .about-frame{width:min(300px,90vw)}
+    }
+
+    /* SECCIONES GENERALES */
+    section{padding:68px 0;border-top:1px solid rgba(255,255,255,.06)}
+    h2{font-size:clamp(22px,3.5vw,30px);margin:0 0 16px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px;box-shadow:var(--ring)}
+    .card h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:1rem}
+    .card h3 i{font-size:20px;opacity:.95}
+    .meta{color:var(--muted);font-size:.93rem}
+
+    /* DOCK */
+    .dock{
+      position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.06));
+      backdrop-filter:saturate(160%) blur(10px);-webkit-backdrop-filter:saturate(160%) blur(10px);
+      border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 50px rgba(0,0,0,.55);
+      border-radius:var(--dock-radius);padding:10px;z-index:9999;margin-bottom:env(safe-area-inset-bottom)
+    }
+    .dock ul{list-style:none;display:flex;margin:0;padding:0;gap:18px;position:relative;align-items:center}
+    .dock li{position:relative}
+    .dock button{
+      appearance:none;background:transparent;color:rgba(232,246,255,.88);border:1px solid transparent;border-radius:9999px;
+      width:var(--btn-size);height:var(--btn-size);display:grid;place-items:center;cursor:pointer;position:relative;
+      transition:color .25s ease, transform .2s ease
+    }
+    .dock button:hover{color:var(--selector-color);transform:translateY(-1px)}
+    .dock button[aria-current="true"]{color:var(--selector-color)}
+    .dock button:focus-visible{outline:2px solid color-mix(in oklab, var(--selector-color) 70%, transparent); outline-offset:3px; border-radius:9999px}
+    .dock button i{font-size:22px;opacity:.95}
+    .dock .selector{
+      position:absolute;left:var(--sel-left,10px);top:var(--sel-top,10px);
+      width:var(--selector-size);height:var(--selector-size);border-radius:9999px;
+      background:radial-gradient(60% 60% at 50% 45%, color-mix(in oklab, var(--selector-color) 28%, white 0%) 0%, color-mix(in oklab, var(--selector-color) 18%, black 0%) 60%, color-mix(in oklab, var(--selector-color) 14%, black 0%) 100%);
+      box-shadow:0 6px 18px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.18),
+                 0 0 0 2px color-mix(in oklab, var(--selector-color) 45%, transparent),
+                 0 0 24px 4px color-mix(in oklab, var(--selector-color) 25%, transparent);
+      transition:left .28s ease, top .28s ease; pointer-events:none;
+    }
+
+    /* FOOTER */
+    .site-footer{
+      padding:56px 20px 120px;
+      background:var(--footer-glow), linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.12)), var(--footer-bg);
+      border-top:1px solid var(--footer-border);
+      box-shadow:inset 0 10px 30px rgba(0,0,0,.25);
+      display:grid;place-items:center;gap:18px;color:var(--muted)
+    }
+    .social{display:flex;align-items:center;gap:18px}
+    .btn-ico{--size:44px;width:var(--size);height:var(--size);display:inline-grid;place-items:center;border-radius:999px;background:#151515;
+      box-shadow:0 0 0 2px rgba(255,255,255,.06) inset, 0 0 0 1px rgba(0,0,0,.6);
+      transition:transform .18s ease, background .18s ease, box-shadow .18s ease; color:#fff}
+    .btn-ico i{font-size:22px}
+    .btn-ico:hover,.btn-ico:focus-visible{background:var(--selector-color);outline:none;transform:translateY(-2px);box-shadow:0 0 0 4px rgba(0,229,255,.25)}
+    .btn-ico:hover i,.btn-ico:focus-visible i{color:#0a0a0a}
+    .copy{font-size:.9rem}
+    @media (max-width:480px){ .btn-ico{--size:40px} .btn-ico i{font-size:20px} }
+
+    @media (max-width:560px){
+      :root{--btn-size:52px;--selector-size:var(--btn-size)}
+      .dock ul{gap:12px}
+      .dock button i{font-size:26px}
+    }
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dock .selector{transition:none}}
+    @media print{.dock{display:none!important} body{background:#fff;color:#000}}
+
+    /* ======= CERTIFICACIONES (ajustes específicos) ======= */
+    #certificaciones .cards.cert-cards{gap:12px;}
+    #certificaciones .card.cert-card{
+      padding:10px 12px;
+      display:flex;
+      flex-direction:column;
+      gap:0.3rem;
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    #certificaciones .card.cert-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 22px rgba(0,0,0,.55);
+      border-color:color-mix(in oklab, var(--selector-color) 55%, transparent);
+    }
+
+    .cert-thumb{
+      width:100%;
+      border-radius:14px;
+      overflow:hidden;
+      background:#020617;
+      position:relative;
+      aspect-ratio:4/3;
+    }
+    .cert-thumb img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .25s ease;
+    }
+    .card.cert-card:hover .cert-thumb img{transform:scale(1.03);}
+    .cert-meta-extra{font-size:.8rem;color:var(--muted);}
+
+    .click-indicator{
+      position:absolute;
+      top:8px;
+      right:8px;
+      width:36px;
+      height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+    }
+    .click-indicator .pulse-circle{
+      position:absolute;
+      width:30px;
+      height:30px;
+      border-radius:999px;
+      border:2px solid color-mix(in oklab, var(--selector-color) 90%, white 4%);
+      opacity:0;
+      transform:scale(0.4);
+    }
+    .click-indicator .pulse-circle.delay{animation-delay:0.45s;}
+    .card.cert-card:hover .click-indicator .pulse-circle{
+      animation:pulseCircle 1.6s infinite;
+      opacity:0.9;
+    }
+    @keyframes pulseCircle{
+      0%{transform:scale(0.3);opacity:0.9;}
+      60%{transform:scale(1.1);opacity:0;}
+      100%{transform:scale(1.25);opacity:0;}
+    }
+
+    /* Modal genérico (imágenes + docs) */
+    .cert-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(5,10,20,.88);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      padding:1.5rem;
+      z-index:9998;
+    }
+    .cert-modal-inner{
+      position:relative;
+      max-width:1000px;
+      width:100%;
+      max-height:90vh;
+    }
+    .cert-modal-inner img{
+      width:100%;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:10px;
+      background:#020617;
+      box-shadow:0 18px 40px rgba(0,0,0,.85);
+    }
+    .cert-modal-close{
+      position:absolute;
+      top:-14px;
+      right:-14px;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      border:none;
+      background:#020617;
+      color:#e5e7eb;
+      font-size:1.4rem;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 0 0 1px rgba(148,163,184,.6), 0 10px 25px rgba(0,0,0,.8);
+      transition:background .2s ease, transform .18s ease;
+    }
+    .cert-modal-close:hover{
+      background:var(--selector-color);
+      color:#020617;
+      transform:translateY(-1px);
+    }
+
+    /* Botón abrir documento en nueva pestaña (modal documentos) */
+    .doc-open-btn{
+      position:absolute;
+      top:-14px;
+      right:30px;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#020617;
+      color:#e5e7eb;
+      box-shadow:0 0 0 1px rgba(148,163,184,.6), 0 10px 25px rgba(0,0,0,.8);
+      text-decoration:none;
+      transition:background .2s ease, transform .18s ease;
+      font-size:1.1rem;
+    }
+    .doc-open-btn:hover{
+      background:var(--selector-color);
+      color:#020617;
+      transform:translateY(-1px);
+    }
+
+    /* ====== CAPACIDADES (nuevo diseño) ====== */
+    #capacidades{
+      background:radial-gradient(900px 600px at 10% -10%, rgba(0,229,255,.15), transparent 55%),
+                 radial-gradient(900px 600px at 90% 110%, rgba(59,130,246,.18), transparent 55%),
+                 #050816;
+    }
+    #capacidades h2{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    #capacidades h2 i{
+      color:var(--selector-color);
+    }
+
+    .cap-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1.6fr);
+      gap:24px;
+      align-items:start;
+    }
+    @media (max-width:800px){
+      .cap-grid{grid-template-columns:1fr;}
+    }
+
+    .cap-summary{
+      background:linear-gradient(135deg, rgba(15,23,42,.95), rgba(8,47,73,.9));
+      border-radius:20px;
+      padding:20px 18px;
+      border:1px solid rgba(148,163,184,.4);
+      box-shadow:0 18px 40px rgba(15,23,42,.85);
+    }
+    .cap-summary p{
+      margin:0 0 16px;
+      color:var(--muted);
+      line-height:1.6;
+      text-align:justify;
+    }
+    .cap-pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .cap-pill{
+      font-size:.82rem;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(15,23,42,.85);
+      color:var(--ink);
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+    }
+    .cap-pill i{
+      font-size:.9rem;
+      color:var(--selector-color);
+    }
+
+    .cap-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+    }
+    .cap-card{
+      background:rgba(15,23,42,.96);
+      border-radius:18px;
+      padding:16px 14px 14px;
+      border:1px solid rgba(148,163,184,.45);
+      box-shadow:0 14px 32px rgba(15,23,42,.9);
+    }
+    .cap-card h3{
+      margin:0 0 8px;
+      font-size:.98rem;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .cap-card h3 i{
+      font-size:1.1rem;
+      color:var(--selector-color);
+    }
+    .cap-card ul{
+      list-style:none;
+      margin:0;
+      padding-left:0;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .cap-card ul li{
+      padding-left:16px;
+      position:relative;
+      margin-bottom:4px;
+    }
+    .cap-card ul li::before{
+      content:"●";
+      font-size:.45rem;
+      position:absolute;
+      left:0;
+      top:6px;
+      color:var(--selector-color);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- INICIO BANNER HACKING / TERMINAL SUPERIOR -->
+<div id="hack-banner">
+  <div class="terminal-line"><span id="terminal-text"></span><span class="cursor">█</span></div>
+</div>
+
+<style>
+  #hack-banner{
+    width:100%;
+    height:70px;
+    background:#0b0f15;
+    border-bottom:1px solid rgba(0,229,255,0.15);
+    display:flex;
+    align-items:center;
+    padding:0 25px;
+    font-family:"Consolas","Courier New",monospace;
+    color:#00e5ff;
+    font-size:0.95rem;
+    overflow:hidden;
+  }
+  #hack-banner .cursor{
+    display:inline-block;
+    margin-left:4px;
+    animation:blink 0.9s infinite steps(1);
+  }
+  @keyframes blink{
+    0%{opacity:1;}
+    50%{opacity:0;}
+    100%{opacity:1;}
+  }
+</style>
+
+<script>
+  const terminalMessages = [
+    "> Inicializando módulos de seguridad...",
+    "> Preparando análisis de red...",
+    "> Ejecutando escaneo Nmap...",
+    "> nmap -Pn -sV -O 192.168.2.0/24 -oN Reporte_nmap.txt",
+    "> Procesando resultados...",
+    "> Análisis completado. Resultado guardado en Reporte_nmap.txt",
+  ];
+
+  let msgIndex = 0;
+  let charIndex = 0;
+  const textEl = document.getElementById("terminal-text");
+
+  function typeEffect(){
+    const currentMsg = terminalMessages[msgIndex];
+
+    if(charIndex < currentMsg.length){
+      textEl.textContent += currentMsg.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeEffect, 55);
+    } else {
+      setTimeout(() => {
+        textEl.textContent = "";
+        charIndex = 0;
+        msgIndex = (msgIndex + 1) % terminalMessages.length;
+        typeEffect();
+      }, 1500);
+    }
+  }
+  typeEffect();
+</script>
+<!-- FIN BANNER HACKING / TERMINAL SUPERIOR -->
+
+<!-- HERO -->
+<header class="hero container" id="inicio">
+  <p style="color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:.8rem">Hola soy</p>
+  <h1>Romeo Garcia</h1>
+  <p class="lead">
+    Estudiente de ingeniería en sistemas y redes informáticas
+    <strong> enfocado en pentesting controlado.</strong>
+    Experiencia con Nmap, Wireshark, Metasploit, Aircrack-ng.
+  </p>
+  
+  <div class="ctas">
+    <a class="btn" href="#contacto">Hablemos</a>
+    <a class="btn outline" href="#" download>Descargar CV</a>
+  </div>
+
+  <div aria-label="habilidades" class="skills">
+    <span class="badge"><i class="bi bi-shield-lock-fill"></i> Ataque</span>
+    <span class="badge"><i class="bi bi-shield-fill-check"></i> Defensa</span>
+    <span class="badge"><i class="bi bi-bug-fill"></i> Vulnerabilidades</span>
+  </div>
+</header>
+
+<!-- ACERCA DE MÍ -->
+<section class="about-section" id="acerca" aria-label="Acerca de mí">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-image-wrapper">
+        <figure class="about-frame">
+          <img src="/.//src/IMG/Romeo.jpg" alt="Romeo Garcia - Especialista en Ciberseguridad" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <div class="about-text">
+        <h2>Acerca de mí</h2>
+        <div class="about-stats">
+          <div class="stat-card">
+            <i class="bi bi-trophy"></i>
+            <div class="stat-label">Nivel</div>
+            <div class="stat-value">Novato</div>
+          </div>
+          <div class="stat-card">
+            <i class="bi bi-patch-check"></i>
+            <div class="stat-label">Certificados</div>
+            <div class="stat-value">13</div>
+          </div>
+          <div class="stat-card">
+            <i class="bi bi-folder-check"></i>
+            <div class="stat-label">Proyectos</div>
+            <div class="stat-value">6 Completados</div>
+          </div>
+        </div>
+
+        <p class="about-description about-description--accent">
+          Analista en Formación | Ciberseguridad, Redes y Sistemas.
+        </p>
+
+        <p class="about-text-main">
+          Soy un estudiante y futuro analista de ciberseguridad con un enfoque disciplinado,
+          metódico y profundamente orientado al análisis técnico. Mi forma de trabajo se basa en
+          comprender a fondo cómo funcionan los sistemas, detectar fallos, corregirlos y documentar
+          cada proceso con precisión profesional. No busco “solo que funcione”; busco entender el
+          por qué y el cómo de cada configuración, regla, servicio o comportamiento dentro de la red.
+          Cuando trabajo el lado ofensivo, aplico metodología, control y documentación, enfocándome
+          en entender cómo un atacante piensa para fortalecer mejor los sistemas. Esta combinación
+          me permite ver la ciberseguridad desde ambos enfoques y construir soluciones más completas
+          y efectivas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section id="certificaciones">
+  <div class="container">
+    <h2>Certificaciones</h2>
+    <div class="cards cert-cards">
+
+      <!-- Certificado 1 - Networking Challenge -->
+      <article class="card cert-card" data-cert="/src/certificados/certificado_networking_challenge.png">
+        <h3><i class="bi bi-award"></i>Networking Challenge</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/certificado_networking_challenge.png" alt="Networking Challenge - UGB">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Universidad Gerardo Barrios · 2024</p>
+        <p class="cert-meta-extra">Primer lugar en desafío de redes.</p>
+      </article>
+
+      <!-- Certificado 2 - Pentester Mentor Junior 2021 -->
+      <article class="card cert-card" data-cert="/src/certificados/Pentester Mentor Junior - Marzo 2021.png">
+        <h3><i class="bi bi-shield-lock"></i>Pentester Mentor Junior</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Pentester Mentor Junior - Marzo 2021.png" alt="Pentester Mentor Junior 2021">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor · Marzo 2021</p>
+        <p class="cert-meta-extra">Formación base en hacking ético y reporte de vulnerabilidades.</p>
+      </article>
+
+      <!-- Certificado 3 - Hacker Mentor - Auditor y pentester de redes wifi.png -->
+      <article class="card cert-card" data-cert="/src/certificados/Hacker Mentor - Auditor y pentester de redes wifi.png">
+        <h3><i class="bi bi-shield-check"></i>Auditor y pentester de redes wifi</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Hacker Mentor - Auditor y pentester de redes wifi.png"" alt="Auditor y pentester de redes wifi">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor · diciembre 2021</p>
+        <p class="cert-meta-extra">Evolución de habilidades de hackeo wifi y prácticas guiadas.</p>
+      </article>
+
+      <!-- Certificado 4 - Pentester Mentor Junior 2022 -->
+      <article class="card cert-card" data-cert="/src/certificados/Hacker Mentor - Pentester Mentor Junior - 2022-03-08.png">
+        <h3><i class="bi bi-shield-check"></i>Pentester Mentor Junior</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Hacker Mentor - Pentester Mentor Junior - 2022-03-08.png" alt="Pentester Mentor Junior 2022">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor · Marzo 2022</p>
+        <p class="cert-meta-extra">Evolución de habilidades ofensivas y prácticas guiadas.</p>
+      </article>
+
+      <!-- Certificado 5 - Iniciando Ciberseguridad -->
+      <article class="card cert-card" data-cert="/src/certificados/Iniciando_ciberseguridad.svg">
+        <h3><i class="bi bi-shield"></i>Iniciando Ciberseguridad</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Iniciando_ciberseguridad.png" alt="Iniciando Ciberseguridad">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Fundamentos de ciberseguridad ofensiva y defensiva.</p>
+      </article>
+
+      <!-- Certificado 6 - Hacking WiFi gratuito -->
+      <article class="card cert-card" data-cert="/src/certificados/Hacking_wifi gratuito.svg">
+        <h3><i class="bi bi-wifi"></i>Hacking WiFi gratuito</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Hacking_wifi gratuito.png" alt="Hacking WiFi Gratuito">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Introducción a técnicas de ataque sobre redes inalámbricas.</p>
+      </article>
+
+      <!-- Certificado 7 - Fundamentos de redes para pentesters -->
+      <article class="card cert-card" data-cert="/src/certificados/Fundamentos de redes para pentesters.svg">
+        <h3><i class="bi bi-diagram-3"></i>Fundamentos de redes para pentesters</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Fundamentos de redes para pentesters.png" alt="Fundamentos de redes para pentesters">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Modelo OSI, topologías y enfoque de red para pruebas de intrusión.</p>
+      </article>
+
+      <!-- Certificado 8 - Ethical Hacking - Red Team -->
+      <article class="card cert-card" data-cert="/src/certificados/Ethical Hacking - Red Team.svg">
+        <h3><i class="bi bi-lightning"></i>Ethical Hacking - Red Team</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Ethical Hacking - Red Team.png" alt="Ethical Hacking - Red Team">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Simulación de ataques avanzados para mejorar la defensa.</p>
+      </article>
+
+      <!-- Certificado 9 - Cibershield - Cazando vulnerabilidades -->
+      <article class="card cert-card" data-cert="/src/certificados/Cibershield - Cazando vulnerabilidades.svg">
+        <h3><i class="bi bi-bug"></i>Cibershield - Cazando vulnerabilidades</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Cibershield - Cazando vulnerabilidades.png" alt="Cibershield - Cazando vulnerabilidades">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Detección, análisis y documentación de vulnerabilidades.</p>
+      </article>
+
+      <!-- Certificado 10 - Seminario de Pentesting -->
+      <article class="card cert-card" data-cert="/src/certificados/certificado_seminario_pentesting.svg">
+        <h3><i class="bi bi-search"></i>Seminario de Pentesting</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/certificado_seminario_pentesting.png" alt="Seminario de Pentesting">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Seminario práctico de pruebas de penetración.</p>
+      </article>
+
+      <!-- Certificado 11 - Ghost Pentesting -->
+      <article class="card cert-card" data-cert="/src/certificados/Diploma_ghost.svg">
+        <h3><i class="bi bi-terminal"></i>Ghost Pentesting</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Diploma_ghost.png" alt="Diploma Ghost">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor</p>
+        <p class="cert-meta-extra">Reconocimiento a participación en laboratorio ofensivo.</p>
+      </article>
+
+      <!-- Certificado 12 - Certificado CDFI -->
+      <article class="card cert-card" data-cert="/src/certificados/certificado_cdfi.svg">
+        <h3><i class="bi bi-mortarboard"></i>Certificado CDFI</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/certificado_cdfi.png" alt="Certificado CDFI">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">CDFI</p>
+        <p class="cert-meta-extra">Capacitación en área tecnológica (detalle según contenido del diploma).</p>
+      </article>
+
+      <!-- Certificado 13 - NUEVO / ÚLTIMO: Auditor y Pentester de Redes WiFi (SVG) -->
+      <article class="card cert-card" data-cert="/src/certificados/Auditor_pentester_wifi.svg">
+        <h3><i class="bi bi-wifi"></i>Auditor y Pentester de Redes WiFi</h3>
+        <div class="cert-thumb">
+          <img src="/src/certificados/Auditor_pentester_wifi.png" alt="Auditor y Pentester de Redes WiFi">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">Hacker Mentor · Curso especializado</p>
+        <p class="cert-meta-extra">Auditoría y explotación ética de redes inalámbricas.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- MODAL CERTIFICADOS (IMÁGENES) -->
+<div id="cert-modal" class="cert-modal" aria-hidden="true">
+  <div class="cert-modal-inner">
+    <button class="cert-modal-close" type="button" aria-label="Cerrar certificado">&times;</button>
+    <img id="cert-modal-img" src="" alt="Vista ampliada">
+  </div>
+</div>
+
+<!-- MODAL DOCUMENTOS (PROYECTOS PDF) -->
+<div id="doc-modal" class="cert-modal" aria-hidden="true">
+  <div class="cert-modal-inner">
+    <button class="cert-modal-close" type="button" aria-label="Cerrar documento">&times;</button>
+    <a id="doc-modal-open" href="#" target="_blank" rel="noopener"
+       class="doc-open-btn" title="Abrir en nueva pestaña">
+      <i class="bi bi-box-arrow-up-right"></i>
+    </a>
+    <iframe id="doc-modal-frame"
+            src=""
+            title="Documento de proyecto"
+            style="width:100%;height:80vh;border-radius:10px;border:none;background:#020617;"></iframe>
+  </div>
+</div>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="container">
+    <h2>Proyectos</h2>
+    <div class="cards cert-cards">
+
+      <!-- Proyecto 1 - Red de tickets departamentales (IMAGEN) -->
+      <article class="card cert-card" data-cert="IMG/Prueba.png">
+        <h3><i class="bi bi-diagram-3"></i>Red de tickets departamentales</h3>
+        <div class="cert-thumb">
+          <img src="./src/IMG/Prueba.png" alt="Red de tickets de autobuses">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">
+          Creación de red para control de tickets de autobuses conectando múltiples departamentos.
+        </p>
+      </article>
+
+      <!-- Proyecto 2 - Guía de instalación de WAZUH 2025 (PDF) -->
+      <article class="card cert-card project-pdf"
+               data-doc="pdf/Guía de instalación de WAZUH 2025.pdf">
+        <h3><i class="bi bi-file-earmark-pdf"></i>Guía de instalación de WAZUH 2025</h3>
+        <div class="cert-thumb">
+          <!-- Miniatura del documento -->
+          <img src="./src/IMG/wazuh_installation_cover.png" alt="Guía de instalación de WAZUH 2025">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">
+          Documento paso a paso del laboratorio 1 de instalación y configuración del SIEM Wazuh.
+        </p>
+      </article>
+
+      <!-- Proyecto 3 - Práctica desencriptando credenciales con Parrot Security (PDF) -->
+      <article class="card cert-card project-pdf"
+               data-doc="pdf/Práctica Desencriptando credenciales con Parrot Security Resuelto.pdf">
+        <h3><i class="bi bi-file-earmark-pdf"></i>Desencriptando credenciales con Parrot</h3>
+        <div class="cert-thumb">
+          <img src="./src/IMG/responder_john_cover.png" alt="Práctica desencriptando credenciales con Parrot Security">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">
+          Práctica para analizar y recuperar credenciales utilizando Parrot Security OS.
+        </p>
+      </article>
+
+      <!-- Proyecto 4 - Práctica Hydra Resuelta (PDF) -->
+      <article class="card cert-card project-pdf"
+               data-doc="pdf/Práctica Hydra Resuelta.pdf">
+        <h3><i class="bi bi-file-earmark-pdf"></i>Práctica Hydra resuelta</h3>
+        <div class="cert-thumb">
+          <img src="./src/IMG/hydra_bruteforce_cover.png" alt="Práctica Hydra resuelta">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">
+          Laboratorio de fuerza bruta con Hydra documentado paso a paso.
+        </p>
+      </article>
+
+      <!-- Proyecto 5 - Práctica Parrot Security (PDF) -->
+      <article class="card cert-card project-pdf"
+               data-doc="pdf/Práctica Parrot Security.pdf">
+        <h3><i class="bi bi-file-earmark-pdf"></i>Práctica Parrot Security</h3>
+        <div class="cert-thumb">
+          <img src="./src/IMG/msfvenom_metasploit_cover.png" alt="Práctica Parrot Security">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">
+          Escenarios de ataque y análisis desde Parrot orientados a laboratorio académico.
+        </p>
+      </article>
+
+      <!-- Proyecto 6 - Taller sobre ElasticSearch (PDF) -->
+      <article class="card cert-card project-pdf"
+               data-doc="pdf/Taller sobre ElasticSearch.pdf">
+        <h3><i class="bi bi-file-earmark-pdf"></i>Taller sobre ElasticSearch</h3>
+        <div class="cert-thumb">
+          <img src="./src/IMG/elasticsearch_workshop_cover.png" alt="Taller sobre ElasticSearch">
+          <div class="click-indicator">
+            <span class="pulse-circle"></span>
+            <span class="pulse-circle delay"></span>
+          </div>
+        </div>
+        <p class="meta">
+          Taller sobre búsqueda, índices y visualización de datos con ElasticSearch.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CAPACIDADES (reales, nuevo diseño) -->
+<section id="capacidades">
+  <div class="container">
+    <h2><i class="bi bi-cpu"></i>Capacidades</h2>
+
+    <div class="cap-grid">
+      <!-- Resumen / tags -->
+      <div class="cap-summary">
+        <p>
+          Trabajo la ciberseguridad desde la práctica en laboratorio:
+          montando entornos virtuales, simulando ataques controlados y
+          reforzando la infraestructura con buenas prácticas de redes y sistemas.
+          Mi enfoque es técnico, documentado y paso a paso.
+        </p>
+        <div class="cap-pill-row">
+          <span class="cap-pill"><i class="bi bi-terminal"></i>Linux &amp; CLI</span>
+          <span class="cap-pill"><i class="bi bi-diagram-3"></i>Diseño de redes</span>
+          <span class="cap-pill"><i class="bi bi-bug-fill"></i>Pentesting controlado</span>
+          <span class="cap-pill"><i class="bi bi-eye"></i>Monitoreo con Wazuh</span>
+          <span class="cap-pill"><i class="bi bi-hdd-network"></i>VirtualBox / VMware</span>
+          <span class="cap-pill"><i class="bi bi-journal-code"></i>Guías y documentación</span>
+        </div>
+      </div>
+
+      <!-- Tarjetas de capacidades -->
+      <div class="cap-cards">
+        <article class="cap-card">
+          <h3><i class="bi bi-lightning-charge"></i>Ofensiva (Red Team controlado)</h3>
+          <ul>
+            <li>Reconocimiento activo con Nmap (escaneos de puertos y servicios).</li>
+            <li>Enumeración básica de servicios antes de intentar explotación.</li>
+            <li>Uso de Metasploit para pruebas de explotación guiadas.</li>
+            <li>Pentesting WiFi con Aircrack-ng en entornos de laboratorio.</li>
+            <li>Reporte de hallazgos con capturas, comandos y conclusiones.</li>
+          </ul>
+        </article>
+
+        <article class="cap-card">
+          <h3><i class="bi bi-shield-shaded"></i>Defensiva y monitoreo</h3>
+          <ul>
+            <li>Hardening básico en Linux (servicios innecesarios, permisos, usuarios).</li>
+            <li>Reglas de firewall y NAT en pfSense para segmentar redes.</li>
+            <li>Configuración de Wazuh para monitoreo de eventos y logs.</li>
+            <li>Uso de Auditd / Filebeat / Kibana para ver actividad del sistema.</li>
+            <li>Gestión básica de copias de seguridad de máquinas virtuales.</li>
+          </ul>
+        </article>
+
+        <article class="cap-card">
+          <h3><i class="bi bi-diagram-3"></i>Redes y sistemas</h3>
+          <ul>
+            <li>Diseño de topologías en Packet Tracer (IPv4 / IPv6).</li>
+            <li>Configuración de OSPFv3, VLANs y enlaces Frame Relay en laboratorio.</li>
+            <li>Servicios de red básicos: DHCP, DNS, HTTP en entornos de prueba.</li>
+            <li>Montaje de entornos en VirtualBox y VMware Workstation.</li>
+            <li>Gestión de snapshots y exportación de máquinas para respaldos.</li>
+          </ul>
+        </article>
+
+        <article class="cap-card">
+          <h3><i class="bi bi-journal-text"></i>Documentación y metodología</h3>
+          <ul>
+            <li>Creación de guías técnicas paso a paso (Wazuh, pfSense, laboratorios).</li>
+            <li>Uso de capturas, comandos y explicación de cada fase.</li>
+            <li>Orden en el nombrado de máquinas, redes y proyectos.</li>
+            <li>Enfoque metódico: hipótesis → prueba → evidencia → conclusión.</li>
+            <li>Capacidad de explicar los labs a compañeros y docentes.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <h2>Contacto</h2>
+    <div class="card">
+      <p><strong>Email:</strong> alexcastillo7g@gmail.com</p>
+      <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/romeogarcia</a></p>
+      <p><strong>GitHub:</strong> <a href="#">github.com/romeogarcia</a></p>
+    </div>
+    <p class="meta" style="margin-top:12px">© <span id="year"></span> · Portafolio de Ciberseguridad · Romeo García</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <nav class="social" aria-label="Enlaces sociales y de portafolio">
+    <a class="btn-ico" href="https://www.linkedin.com/in/romeo-alexander-garcia-castillo-8883b513a/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+      <i class="bi bi-linkedin"></i>
+    </a>
+    <a class="btn-ico" href="https://github.com/Romeo779" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+      <i class="bi bi-github"></i>
+    </a>
+  </nav>
+  <small class="copy">© <span id="y"></span> Romeo Garcia. Todos los derechos reservados.</small>
+</footer>
+
+<!-- DOCK -->
+<nav class="dock" aria-label="Navegación principal">
+  <ul>
+    <span class="selector" aria-hidden="true"></span>
+    <li><button data-target="#inicio" data-tip="Inicio" aria-current="true"><i class="bi bi-house"></i></button></li>
+    <li><button data-target="#certificaciones" data-tip="Certificaciones"><i class="bi bi-award"></i></button></li>
+    <li><button data-target="#proyectos" data-tip="Proyectos"><i class="bi bi-diagram-3"></i></button></li>
+    <li><button data-target="#capacidades" data-tip="Capacidades"><i class="bi bi-wrench"></i></button></li>
+    <li><button data-target="#contacto" data-tip="Contacto"><i class="bi bi-chat-dots"></i></button></li>
+  </ul>
+</nav>
+
+<script>
+  const y = document.getElementById('y');
+  if (y) y.textContent = new Date().getFullYear();
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  const dock = document.querySelector('.dock');
+  const ul = dock.querySelector('ul');
+  const selector = dock.querySelector('.selector');
+  const buttons = [...dock.querySelectorAll('button')];
+  const map = new Map(buttons.map(b => [b.dataset.target, b]));
+
+  function moveSelector(btn){
+    const size = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--selector-size'));
+    const brBtn = btn.getBoundingClientRect();
+    const brUl  = ul.getBoundingClientRect();
+    const left = (brBtn.left - brUl.left) + (brBtn.width  - size)/2;
+    const top  = (brBtn.top  - brUl.top ) + (brBtn.height - size)/2;
+    selector.style.setProperty('--sel-left', left + 'px');
+    selector.style.setProperty('--sel-top',  top  + 'px');
+  }
+
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    const id = btn.dataset.target;
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+    buttons.forEach(b => b.setAttribute('aria-current','false'));
+    btn.setAttribute('aria-current','true');
+    moveSelector(btn);
+    if (navigator.maxTouchPoints && 'vibrate' in navigator) navigator.vibrate(5);
+  }));
+
+  const sections = [...map.keys()].map(sel => document.querySelector(sel)).filter(Boolean);
+
+  let ticking = false;
+  function updateActiveOnScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const mid = innerHeight / 2;
+      let best = null, dist = Infinity;
+      for (const s of sections){
+        const r = s.getBoundingClientRect();
+        const c = r.top + r.height/2;
+        const d = Math.abs(c - mid);
+        if (d < dist){ dist = d; best = s; }
+      }
+      if (best){
+        const active = map.get('#' + best.id);
+        if (active && active.getAttribute('aria-current') !== 'true'){
+          buttons.forEach(b => b.setAttribute('aria-current','false'));
+          active.setAttribute('aria-current','true');
+          moveSelector(active);
+        }
+      }
+      ticking = false;
+    });
+  }
+
+  function initDock(){
+    const current = dock.querySelector('button[aria-current="true"]') || buttons[0];
+    if (current) moveSelector(current);
+    updateActiveOnScroll();
+  }
+
+  addEventListener('scroll', updateActiveOnScroll, {passive:true});
+  addEventListener('resize', initDock);
+  addEventListener('orientationchange', initDock);
+  addEventListener('DOMContentLoaded', initDock);
+  addEventListener('load', initDock);
+</script>
+
+<!-- MODAL IMÁGENES (certificados + proyecto tickets) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.cert-card[data-cert]');
+    const modal = document.getElementById('cert-modal');
+    const modalImg = document.getElementById('cert-modal-img');
+    const btnClose = modal.querySelector('.cert-modal-close');
+
+    if (!cards.length || !modal || !modalImg || !btnClose) return;
+
+    function openModal(src){
+      modalImg.src = src;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal(){
+      modal.style.display = 'none';
+      modalImg.src = '';
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const src = card.getAttribute('data-cert');
+        if (!src) return;
+        openModal(src);
+      });
+    });
+
+    btnClose.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+<!-- MODAL DOCUMENTOS (PDF de proyectos) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const projectCards = document.querySelectorAll('.project-pdf[data-doc]');
+    const docModal = document.getElementById('doc-modal');
+    const docFrame = document.getElementById('doc-modal-frame');
+    const docOpen = document.getElementById('doc-modal-open');
+    const docClose = docModal ? docModal.querySelector('.cert-modal-close') : null;
+
+    if (!projectCards.length || !docModal || !docFrame || !docOpen || !docClose) return;
+
+    function openDocModal(url){
+      docFrame.src = url;
+      docOpen.href = url;
+      docModal.style.display = 'flex';
+      docModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeDocModal(){
+      docModal.style.display = 'none';
+      docFrame.src = '';
+      docModal.setAttribute('aria-hidden', 'true');
+    }
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const url = card.getAttribute('data-doc');
+        if (!url) return;
+        openDocModal(url);
+      });
+    });
+
+    docClose.addEventListener('click', closeDocModal);
+
+    docModal.addEventListener('click', (e) => {
+      if (e.target === docModal) closeDocModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && docModal.style.display === 'flex') {
+        closeDocModal();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
