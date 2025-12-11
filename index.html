@@ -440,7 +440,141 @@
       color:var(--selector-color);
     }
 
-  </style>
+  /* ====== FORMULARIO DE CONTACTO ====== */
+.contact-form{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:var(--panel);
+  border-radius:18px;
+  padding:18px 18px 20px;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:var(--ring);
+}
+
+.contact-field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.contact-field label{
+  font-size:.88rem;
+  color:var(--muted);
+}
+
+.contact-field input,
+.contact-field textarea{
+  background:#050814;
+  border-radius:12px;
+  border:1px solid rgba(0,229,255,.28);
+  padding:12px 14px;
+  font-size:.95rem;
+  color:var(--ink);
+  outline:none;
+  font-family:inherit;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder{
+  color:rgba(159,179,200,.7);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus{
+  border-color:var(--selector-color);
+  box-shadow:0 0 0 1px rgba(0,229,255,.35);
+  background:#020617;
+}
+
+.contact-btn{
+  margin-top:6px;
+  align-self:flex-start;
+  background:var(--selector-color);
+  color:#050814;
+  border-radius:14px;
+  padding:10px 20px;
+}
+
+/* En móviles que ocupe todo el ancho */
+@media (max-width:600px){
+  .contact-btn{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+}
+
+/* FORMULARIO DE CONTACTO */
+.contact-form{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:var(--panel);
+  border-radius:18px;
+  padding:18px 18px 20px;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:var(--ring);
+}
+
+.contact-field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.contact-field label{
+  font-size:.88rem;
+  color:var(--muted);
+}
+
+.contact-field input,
+.contact-field textarea{
+  background:#050814;
+  border-radius:12px;
+  border:1px solid rgba(0,229,255,.28);
+  padding:12px 14px;
+  font-size:.95rem;
+  color:var(--ink);
+  outline:none;
+  font-family:inherit;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder{
+  color:rgba(159,179,200,.7);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus{
+  border-color:var(--selector-color);
+  box-shadow:0 0 0 1px rgba(0,229,255,.35);
+  background:#020617;
+}
+
+.contact-btn{
+  margin-top:6px;
+  align-self:flex-start;
+  background:var(--selector-color);
+  color:#050814;
+  border-radius:14px;
+  padding:10px 20px;
+}
+
+/* En móviles que ocupe todo el ancho */
+@media (max-width:600px){
+  .contact-btn{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -619,7 +753,7 @@
       <article class="card cert-card" data-cert="./src/Certificados/Hacker Mentor - Auditor y pentester de redes wifi.png">
         <h3><i class="bi bi-shield-check"></i>Auditor y pentester de redes wifi</h3>
         <div class="cert-thumb">
-          <img src="./src/Certificados/Hacker Mentor - Auditor y pentester de redes wifi.png"" alt="Auditor y pentester de redes wifi">
+          <img src="./src/Certificados/Hacker Mentor - Auditor y pentester de redes wifi.png" alt="Auditor y pentester de redes wifi">
           <div class="click-indicator">
             <span class="pulse-circle"></span>
             <span class="pulse-circle delay"></span>
@@ -1010,15 +1144,34 @@
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="container">
-    <h2>Contacto</h2>
-    <div class="card">
-      <p><strong>Email:</strong> alexcastillo7g@gmail.com</p>
-      <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/romeogarcia</a></p>
-      <p><strong>GitHub:</strong> <a href="#">github.com/romeogarcia</a></p>
-    </div>
-    <p class="meta" style="margin-top:12px">© <span id="year"></span> · Portafolio de Ciberseguridad · Romeo García</p>
+    <h2>Contáctame</h2>
+
+    <form id="contact-form" class="contact-form card">
+      <div class="contact-field">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Romeo García" required>
+      </div>
+
+      <div class="contact-field">
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" required>
+      </div>
+
+      <div class="contact-field">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Hola Romeo, tengo una pregunta..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn contact-btn">Enviar mensaje</button>
+    </form>
+
+    <p class="meta" style="margin-top:12px">
+      También puedes escribirme directamente a 
+      <a href="mailto:alexcastillo7g@gmail.com">alexcastillo7g@gmail.com</a>
+    </p>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -1202,6 +1355,32 @@
       if (e.key === 'Escape' && docModal.style.display === 'flex') {
         closeDocModal();
       }
+    });
+  });
+</script>
+
+<!--SCRIPT DEL FORMULARIO DE CONTACTOS-->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nombre  = form.elements['nombre'].value.trim();
+      const email   = form.elements['email'].value.trim();
+      const mensaje = form.elements['mensaje'].value.trim();
+
+      const subject = encodeURIComponent('Nuevo mensaje desde el portafolio');
+      const body = encodeURIComponent(
+        'Nombre: ' + nombre + '\n' +
+        'Correo: ' + email + '\n\n' +
+        'Mensaje:\n' + mensaje
+      );
+
+      window.location.href =
+        'mailto:alexcastillo7g@gmail.com?subject=' + subject + '&body=' + body;
     });
   });
 </script>
